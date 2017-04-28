@@ -1,0 +1,114 @@
+Main/
+
+  Main.java
+
+  Controller/
+	AbstractController 	
+	GameController
+	GameEngineController
+	GameEditorController
+
+  Model/
+	AbstractModel
+	Game
+	Cell
+	MapEngine
+	MapEditor
+	Sprite
+	Character
+		
+  View/
+	DefaultView	
+		
+	Engine/
+	  EngineView
+
+	Editor/
+	  EditorView
+	  ExplorerView
+
+
+/*********************** CONTROLLER  **********************************/
+
+AbstractController: Controller abstrait	
+GameController: Controle le Jeu tout entier (GameEngine && GameEditor)
+		-init_Game()
+		
+		
+GameEngineController: Controle le GameEngine 
+		     - initEngine(".world")
+		     		-load_game()
+		     - start()
+		     - update()
+		     - save_game()		     
+		     - teleport()
+	
+GameEditorController: Controle le GameEditor 
+		     - initEditor()
+		     - initMap()
+		     - load_map()
+		     - save_map()
+		     - undo()
+		     - redo()
+
+/*********************** MODEL  **********************************/
+
+Game : 
+ 	ArrayList<Map> listmap;
+	String name_perso;
+    	private String name_map;
+		
+Cell: 
+	ArrayList<Sprite> layer;
+    	int posX;
+    	int posY;
+
+Map:
+	private Cell Map[][];
+   	private String Name_map;
+   	private int xSize;
+	private int ySize;
+
+Sprite:
+	private BufferedImage img;
+   	private String path_sprite = "";
+
+Character:
+	id
+	name	
+	posX;
+	posY;
+	- move()
+
+/************************  JSON ****************************/	    
+
+
+{
+  "maps":{	
+
+	"map1": { 
+		"name_map": EXEMPLE_NAME0,
+     	},
+    	"map2": { 
+       		"name_map": EXEMPLE_NAME1,
+    	}
+  },
+
+  "character": {
+	"perso":{
+		"perso1": { 
+			"name_perso": EXEMPLE_NAME2,
+	     	},
+	},
+	"npcs":{
+	    	"npc1": { 
+	       		"name_npc": EXEMPLE_NAME3,
+	    	}
+		"npc2": { 
+	       		"name_npc": EXEMPLE_NAME4,
+	    	}
+	}
+  }
+}
+ 
+
