@@ -1,0 +1,11 @@
+{
+    "Map:"{
+            {GRASS,GRASS,GRASS,GRASS,GRASS}
+            {GRASS,GRASS,GRASS,GRASS,GRASS}
+            {GRASS,GRASS,HOUSE,GRASS,GRASS}
+            {GRASS,GRASS,GRASS,GRASS,GRASS}
+            {GRASS,GRASS,GRASS,GRASS,GRASS}
+        }
+    "MetaData":{
+    }
+}
