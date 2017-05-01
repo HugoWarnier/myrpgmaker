@@ -19,7 +19,7 @@ public class Cell extends AbstractModel {
 
     public int getPosX() {
         return posX;
-    }
+    } 
 
     public int getPosY() {
         return posY;
