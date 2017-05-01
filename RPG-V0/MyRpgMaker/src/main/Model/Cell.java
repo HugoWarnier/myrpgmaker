@@ -13,6 +13,7 @@ public class Cell extends AbstractModel {
     private int posY;
 
     public Cell(int x, int y) {
+        this.add_SpriteByRef("GRASS");
         this.posX = x;
         this.posY = y;
     }
@@ -42,13 +43,14 @@ public class Cell extends AbstractModel {
             spr.setPath_sprite(val.HERO.toString());
         else if (str.contains("SEA"))
             spr.setPath_sprite(val.SEA.toString());
+        else if (str.contains("DEFAULT"))
+            spr.setPath_sprite(val.DEFAULT.toString());
         else
-            System.out.println("BAAAD");
-
+            System.out.println(val.DEFAULT.toString());
     }
 
-    public void rm_Sprite(Sprite spr){
-        this.layer.remove(spr);
+    public void rm_FSprite(){
+        this.layer.remove(0);
     }
     public void setLayer(ArrayList<Sprite> layer) {
         this.layer = layer;

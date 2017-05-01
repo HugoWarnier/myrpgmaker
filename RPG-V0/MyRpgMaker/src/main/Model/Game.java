@@ -28,6 +28,13 @@ public class Game extends AbstractModel{
         this.listMap.add(new MapEditor(x,y));
     }
 
+    public Game(MapEditor map) {
+        listMap = new ArrayList<MapEditor>();
+        this.name = "";
+        this.name_map = "";
+        this.listMap.add(map);
+    }
+
     public void parseMap(String content){
 
         JsonElement Jelem = new JsonParser().parse(content);
@@ -45,6 +52,7 @@ public class Game extends AbstractModel{
         for (JsonElement Jelem0 : Jarray) {
             System.out.println(Jelem0);
             for (int i = 0; i < sizeX ; i++) {
+                this.getListMap().get(0).getMap()[i][cpt].rm_FSprite();
                 this.getListMap().get(0).getMap()[i][cpt].add_SpriteByRef(Jelem0.getAsJsonArray().get(i).toString());
             }
             cpt++;

@@ -1,3 +1,5 @@
+package View.Application;
+
 import java.awt.*;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
@@ -16,7 +18,7 @@ import javax.swing.plaf.basic.BasicBorders;
 public class LeftPanel extends JFrame{
 
     // File representing the folder that you select using a FileChooser
-    final File dir = new File("/home/unknown/Pictures/icon");
+    final File dir = new File("/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/Pictures");
 
     // array of supported extensions (use a List if you prefer)
     final String[] EXTENSIONS = new String[]{

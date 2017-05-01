@@ -1,29 +1,35 @@
-import javafx.scene.control.ToolBar;
-import org.w3c.dom.css.Rect;
+package View.Application;
+
+import Controller.GameEditorController;
+import Controller.GameEngineController;
+import View.Editor.EditorView;
+
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.temporal.JulianFields;
-import java.util.*;
-import javax.imageio.ImageIO;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.tools.Tool;
 
-public class Application extends JFrame {
+public class Application extends JFrame implements Observer {
+
+    public GameEditorController Editor;
+    public GameEngineController Engine;
 
     public Application() throws IOException {
+        Init_menu("rpgMaker", 1200, 700);
+    }
+
+    public Application(GameEditorController Edit) throws IOException {
+        Editor = Edit;
         Init_menu("rpgMaker", 1200, 700);
     }
 
@@ -31,6 +37,7 @@ public class Application extends JFrame {
 
         CreateMenuBar();
         CreateToolBar();
+        CreateGameBoard();
         LeftPanel file = new LeftPanel();
         add(file.ReadImage(), BorderLayout.WEST);
 
@@ -38,6 +45,11 @@ public class Application extends JFrame {
         setSize(width, height);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    private void CreateGameBoard(){
+        EditorView Edtv = new EditorView(Editor);
+        add(Edtv.initGameBoard(), BorderLayout.EAST);
     }
 
     private void CreateMenuBar() {
@@ -266,6 +278,11 @@ public class Application extends JFrame {
             }
             ex.setVisible(true);
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }
 

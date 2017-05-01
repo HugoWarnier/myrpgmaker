@@ -1,10 +1,13 @@
 import Controller.GameEditorController;
 import Model.Game;
+import View.Application.Application;
+import View.Editor.EditorView;
 
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by hugo on 01/05/17.
@@ -12,7 +15,23 @@ import java.io.File;
 public class MainTest {
 
     public static void main(String[] args) {
-        LoadMapTest(20,20);
+        PanelTest(15,15);
+    }
+
+    public static void PanelTest(int x,int y){
+        try {
+
+            int sizeX = x;
+            int sizeY = y;
+            Game game = new Game(sizeX,sizeY);
+            GameEditorController editor = new GameEditorController(game);
+            System.out.println(editor);
+            Application app = new Application(editor);
+            app.setVisible(true);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void LoadMapTest(int x,int y){

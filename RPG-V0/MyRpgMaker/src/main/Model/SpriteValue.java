@@ -10,5 +10,6 @@ public class SpriteValue {
     public static String CENTER = "sprites/foregroundObject/center.png";
     public static String HOUSE = "sprites/foregroundObject/house.png";
     public static String HERO = "/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/npc/hero.png";
+    public static String DEFAULT = "/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/backgroundTile/default.png";
 
 }
