@@ -56,8 +56,8 @@ public class Game extends AbstractModel{
 
         try {
             /**
-            *  Map Loading
-            * */
+             *  Map Loading
+             * */
 
             FileInputStream mmap = new FileInputStream(path);
             InputStreamReader mapReader = new InputStreamReader(mmap);
