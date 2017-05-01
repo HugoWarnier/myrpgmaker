@@ -26,12 +26,17 @@ public class GameEditorController extends AbstractController{
         return map;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
     public ArrayList<Sprite> initEditor(){
 
         ArrayList<Sprite> listSprite = new ArrayList<Sprite>();
 
         return listSprite;
     }
+
 
     public void LoadMap(String path){
         game.loadMap(path);
