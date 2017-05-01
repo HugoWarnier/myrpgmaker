@@ -2,10 +2,12 @@ package Controller;
 
 import Model.Game;
 import Model.MapEditor;
+import Model.Sprite;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by hugo on 27/04/17.
@@ -18,12 +20,18 @@ public class GameEditorController extends AbstractController{
         this.game = game;
     }
 
-    public MapEditor initMap(){
-        MapEditor map = new MapEditor(20,20);
+    public MapEditor initMap(int x,int y){
+        MapEditor map = new MapEditor(x,y);
         game.addMap(map);
         return map;
     }
 
+    public ArrayList<Sprite> initEditor(){
+
+        ArrayList<Sprite> listSprite = new ArrayList<Sprite>();
+
+        return listSprite;
+    }
 
     public void LoadMap(String path){
         game.loadMap(path);

@@ -25,6 +25,9 @@ public class MapEditor extends AbstractModel{
     public void setMap(Cell map[][]) {
         carte = map;
     }
+    public void setMap(MapEditor map) {
+        carte = map.getMap();
+    }
 
     public void setName_map(String name_map) {
         Name_map = name_map;

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Cell extends AbstractModel {
 
-    ArrayList<Sprite> layer;
+    ArrayList<Sprite> layer = new ArrayList<Sprite>();
 
     private int posX;
     private int posY;
@@ -28,6 +28,25 @@ public class Cell extends AbstractModel {
     public void add_Sprite(Sprite spr){
         this.layer.add(spr);
     }
+
+    public void add_SpriteByRef(String str){
+
+        SpriteValue val = new SpriteValue();
+        Sprite spr = new Sprite();
+
+        this.add_Sprite(spr);
+        System.out.println(str);
+        if (str.contains("GRASS"))
+            spr.setPath_sprite(val.GRASS.toString());
+        else if (str.contains("HERO"))
+            spr.setPath_sprite(val.HERO.toString());
+        else if (str.contains("SEA"))
+            spr.setPath_sprite(val.SEA.toString());
+        else
+            System.out.println("BAAAD");
+
+    }
+
     public void rm_Sprite(Sprite spr){
         this.layer.remove(spr);
     }

@@ -1,11 +1,9 @@
 package Model;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.google.gson.*;
+import jdk.nashorn.internal.scripts.JO;
+
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -18,14 +16,74 @@ public class Game extends AbstractModel{
     private String name_map;
 
     public Game() {
+        listMap = new ArrayList<MapEditor>();
         this.name = "";
         this.name_map = "";
     }
 
+    public Game(int x, int y) {
+        listMap = new ArrayList<MapEditor>();
+        this.name = "";
+        this.name_map = "";
+        this.listMap.add(new MapEditor(x,y));
+    }
+
+    public void parseMap(String content){
+
+        JsonElement Jelem = new JsonParser().parse(content);
+        JsonObject Jobj = Jelem.getAsJsonObject();
+        JsonArray Jarray = Jobj.getAsJsonArray("Map");
+        ReadJsonForLoad(Jarray);
+    }
+
+    public void ReadJsonForLoad(JsonArray Jarray){
+
+        int sizeX = this.getListMap().get(0).getxSize();
+        int sizeY = this.getListMap().get(0).getySize();
+        int cpt = 0;
+
+        for (JsonElement Jelem0 : Jarray) {
+            System.out.println(Jelem0);
+            for (int i = 0; i < sizeX ; i++) {
+                this.getListMap().get(0).getMap()[i][cpt].add_SpriteByRef(Jelem0.getAsJsonArray().get(i).toString());
+            }
+            cpt++;
+        }
+        this.listMap.add(this.getListMap().get(0));
+    }
+
     public void loadMap(String path){
 
-        File mmap = new File(path);
+        try {
+            /**
+            *  Map Loading
+            * */
 
+            FileInputStream mmap = new FileInputStream(path);
+            InputStreamReader mapReader = new InputStreamReader(mmap);
+            BufferedReader buffer = new BufferedReader(mapReader);
+            String l;
+            String content = "";
+            JsonArray Jarray = new JsonArray();
+
+            /**
+             *  Map Reading / Factoring
+             **/
+
+            try {
+                while((l = buffer.readLine()) != null){
+                    //System.out.println(l);
+                    content += l+"\n";
+                }
+                parseMap(content);
+                buffer.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveMap(){
