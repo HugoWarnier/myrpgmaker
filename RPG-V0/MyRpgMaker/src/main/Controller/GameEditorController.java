@@ -5,6 +5,7 @@ import Model.MapEditor;
 import Model.Sprite;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class GameEditorController extends AbstractController{
     }
 
 
-    public void LoadMap(String path){
+    public void LoadMap(File path){
         game.loadMap(path);
     }
 

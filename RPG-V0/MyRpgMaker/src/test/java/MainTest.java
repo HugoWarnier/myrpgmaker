@@ -15,7 +15,7 @@ import java.io.IOException;
 public class MainTest {
 
     public static void main(String[] args) {
-        PanelTest(15,15);
+        PanelTest(20,20);
     }
 
     public static void PanelTest(int x,int y){
@@ -41,7 +41,7 @@ public class MainTest {
 
         Game game = new Game(sizeX,sizeY);
         GameEditorController editor = new GameEditorController(game);
-        editor.LoadMap("/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/World/TEST.world");
+        //editor.LoadMap("/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/World/TEST.world");
 
         CardLayout cardL = new CardLayout();
         JFrame jf = new JFrame();

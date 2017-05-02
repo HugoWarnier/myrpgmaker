@@ -19,7 +19,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class Application extends JFrame implements Observer {
+public class Application extends JFrame implements Observer{
 
     public GameEditorController Editor;
     public GameEngineController Engine;
@@ -49,7 +49,7 @@ public class Application extends JFrame implements Observer {
 
     private void CreateGameBoard(){
         EditorView Edtv = new EditorView(Editor);
-        add(Edtv.initGameBoard(), BorderLayout.EAST);
+        add(Edtv.initGameBoard(), BorderLayout.CENTER);
     }
 
     private void CreateMenuBar() {
@@ -83,7 +83,7 @@ public class Application extends JFrame implements Observer {
             JFileChooser fileChooser = new JFileChooser();
             if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 File tmp = fileChooser.getSelectedFile();
-                // load from file
+                Editor.LoadMap(tmp);
             }
         });
 

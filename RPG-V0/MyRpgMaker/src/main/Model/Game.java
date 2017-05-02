@@ -60,7 +60,7 @@ public class Game extends AbstractModel{
         this.listMap.add(this.getListMap().get(0));
     }
 
-    public void loadMap(String path){
+    public void loadMap(File path){
 
         try {
             /**

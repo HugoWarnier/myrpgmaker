@@ -24,8 +24,8 @@ public class EditorView extends JFrame implements Observer {
         this.game = controller.getGame();
         this.sizeX = game.getListMap().get(0).getxSize();
         this.sizeY = game.getListMap().get(0).getySize();
+        setSize(400,400);
         initGameBoard();
-
     }
 
     public JPanel initGameBoard(){
@@ -33,15 +33,30 @@ public class EditorView extends JFrame implements Observer {
         JPanel GameBoard = new JPanel();
 
         GameBoard.setLayout(new GridLayout(sizeX,sizeY));
-
         for (int i = 0; i < sizeX ; i++) {
             for (int k = 0; k < sizeY ; k++) {
-                System.out.println(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite());
-                JButton tileBoard = new JButton(new ImageIcon(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite()));
+                JButton tileBoard = new tileGameBoard(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite());
                 GameBoard.add(tileBoard);
             }
         }
         return GameBoard;
+    }
+
+    public class tileGameBoard extends JButton{
+
+        public Image Img;
+        private String path;
+
+        public tileGameBoard(String path){
+            Img = new ImageIcon(path).getImage();
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (Img == null) return;
+            g.drawImage(Img,0,0,getWidth(),getHeight(),this);
+        }
     }
 
     @Override
@@ -49,3 +64,5 @@ public class EditorView extends JFrame implements Observer {
 
     }
 }
+
+
