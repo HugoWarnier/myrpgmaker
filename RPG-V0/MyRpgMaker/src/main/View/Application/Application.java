@@ -1,8 +1,10 @@
+
 package View.Application;
 
 import Controller.GameEditorController;
 import Controller.GameEngineController;
 import View.Editor.EditorView;
+import javafx.scene.control.Tab;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -33,23 +35,27 @@ public class Application extends JFrame implements Observer{
         Init_menu("rpgMaker", 1200, 700);
     }
 
+    private void CreateGameBoard(){
+        EditorView Edtv = new EditorView(Editor);
+        add(Edtv.initGameBoard(), BorderLayout.CENTER);
+    }
+
     private void Init_menu(String title, int width, int height) throws IOException {
 
         CreateMenuBar();
         CreateToolBar();
-        CreateGameBoard();
+        //CreateGameBoard();
         LeftPanel file = new LeftPanel();
-        add(file.ReadImage(), BorderLayout.WEST);
+        JPanel Left = new JPanel();
+        Left = file.CreateLeftPanel();
+        add(Left, BorderLayout.WEST);
 
+        pack();
         setTitle(title);
-        setSize(width, height);
+        //setSize(width, height);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    private void CreateGameBoard(){
-        EditorView Edtv = new EditorView(Editor);
-        add(Edtv.initGameBoard(), BorderLayout.CENTER);
+        setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );
     }
 
     private void CreateMenuBar() {
@@ -100,7 +106,6 @@ public class Application extends JFrame implements Observer{
         });
 
         JMenu edit = new JMenu("Edit");
-
 
         JMenu view = new JMenu("View");
         file.setMnemonic(KeyEvent.VK_V);
@@ -242,7 +247,6 @@ public class Application extends JFrame implements Observer{
         gbc.fill = GridBagConstraints.HORIZONTAL;
         //
         gbc.weightx = 1;
-
         // Add the buttons into the gridlayout
         panel.add(button, gbc);
         button.setTransferHandler(new ValueExportTransferHandler(button.getIcon().toString()));
