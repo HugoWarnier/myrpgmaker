@@ -151,37 +151,37 @@ public class Application extends JFrame implements Observer{
 
         JToolBar toolbar = new JToolBar();
 
-        JButton CreateFile = CreateButton(new String[]{"/home/unknown/Pictures/icon/new.png", "id", "Create File"});
+        JButton CreateFile = CreateButton(new String[]{"Pictures/new.png", "id", "Create File"});
         toolbar.add(CreateFile);
 
-        JButton OpenFile = CreateButton(new String[]{"/home/unknown/Pictures/icon/open.png", "id", "Open File"});
+        JButton OpenFile = CreateButton(new String[]{"Pictures/open.png", "id", "Open File"});
         toolbar.add(OpenFile);
 
-        JButton SaveFile = CreateButton(new String[]{"/home/unknown/Pictures/icon/save.png", "id", "Save File"});
+        JButton SaveFile = CreateButton(new String[]{"Pictures/save.png", "id", "Save File"});
         toolbar.add(SaveFile);
 
-        JButton CutFile = CreateButton(new String[]{"/home/unknown/Pictures/icon/cut.png", "id", "Cut File"});
+        JButton CutFile = CreateButton(new String[]{"Pictures/cut.png", "id", "Cut File"});
         toolbar.add(CutFile);
 
-        JButton undo = CreateButton(new String[]{"/home/unknown/Pictures/icon/undo.png", "id", "Undo"});
+        JButton undo = CreateButton(new String[]{"Pictures/undo.png", "id", "Undo"});
         toolbar.add(undo);
 
-        JButton redo = CreateButton(new String[]{"/home/unknown/Pictures/icon/redo.png", "id", "Redo"});
+        JButton redo = CreateButton(new String[]{"Pictures/redo.png", "id", "Redo"});
         toolbar.add(redo);
 
-        JButton play = CreateButton(new String[]{"/home/unknown/Pictures/icon/play.png", "id", "Play"});
+        JButton play = CreateButton(new String[]{"Pictures/play.png", "id", "Play"});
         toolbar.add(play);
 
-        JButton stop = CreateButton(new String[]{"/home/unknown/Pictures/icon/stop.png", "id", "Stop"});
+        JButton stop = CreateButton(new String[]{"Pictures/stop.png", "id", "Stop"});
         toolbar.add(stop);
 
-        JButton ZoomOut = CreateButton(new String[]{"/home/unknown/Pictures/icon/zoom_out.png", "id", "Zoom out"});
+        JButton ZoomOut = CreateButton(new String[]{"Pictures/zoom_out.png", "id", "Zoom out"});
         toolbar.add(ZoomOut);
 
-        JButton ZoomIn = CreateButton(new String[]{"/home/unknown/Pictures/icon/zoom_in.png", "id", "Zoom in"});
+        JButton ZoomIn = CreateButton(new String[]{"Pictures/zoom_in.png", "id", "Zoom in"});
         toolbar.add(ZoomIn);
 
-        JButton exit = CreateButton(new String[]{"/home/unknown/Pictures/icon/exit.png", "id", "Exit Application"});
+        JButton exit = CreateButton(new String[]{"Pictures/exit.png", "id", "Exit Application"});
         toolbar.add(exit);
 
         add(toolbar, BorderLayout.NORTH);
