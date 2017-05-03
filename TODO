@@ -18,7 +18,17 @@ Main/
 	Character
 		
   View/
-	DefaultView	
+	ApplicationView
+	  - ToolBar 		   
+		- File:	 	   ----
+		- New
+		- Open and save    DONE
+		- Exit		   DONE
+	  - MenuBar 		   DONE
+	  - ImageExplorer 	   DONE
+		- Selection Sprite 
+	  - Tab for type of sprite DONE
+	  -Map Explorer	
 		
 	Engine/
 	  EngineView
