@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by hugo on 27/04/17.
  */
+
 public class Cell extends AbstractModel {
 
     ArrayList<Sprite> layer = new ArrayList<Sprite>();
@@ -31,7 +32,6 @@ public class Cell extends AbstractModel {
     }
 
     public void add_SpriteByRef(String str){
-
         SpriteValue val = new SpriteValue();
         Sprite spr = new Sprite();
 

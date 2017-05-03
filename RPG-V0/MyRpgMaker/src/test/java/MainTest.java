@@ -24,6 +24,7 @@ public class MainTest {
 
             int sizeX = x;
             int sizeY = y;
+            System.out.println("ici");
             Game game = new Game(sizeX,sizeY);
             GameEditorController editor = new GameEditorController(game);
             System.out.println(editor);

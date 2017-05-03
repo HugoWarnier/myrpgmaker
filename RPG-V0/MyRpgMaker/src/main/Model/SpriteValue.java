@@ -12,4 +12,5 @@ public class SpriteValue {
     public static String HERO = "src/main/resources/sprites/npc/hero.png";
     public static String DEFAULT = "src/main/resources/sprites/backgroundTile/default.png";
 
+
 }

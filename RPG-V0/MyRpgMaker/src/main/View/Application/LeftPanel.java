@@ -48,7 +48,7 @@ public class LeftPanel extends JFrame{
 
     public JPanel CreateLeftPanel () {
 
-        DefaultListModel Model = ReadImage("/home/unknown/Documents/Epita/Projet/baptiste-doublet-myrpkmaker/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/");
+        DefaultListModel Model = ReadImage("src/main/resources/sprites/");
         LeftPanel.setLayout(new GridLayout(2,1));
         LeftPanel.setPreferredSize(new Dimension(400,200));
         LeftPanel.setBorder(BorderFactory.createTitledBorder("Image Editor"));
