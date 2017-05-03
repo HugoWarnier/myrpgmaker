@@ -5,11 +5,11 @@ package Model;
  */
 public class SpriteValue {
 
-    public static String GRASS = "/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/backgroundTile/grass.png";
-    public static String SEA = "/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/backgroundTile/sea.png";
-    public static String CENTER = "sprites/foregroundObject/center.png";
-    public static String HOUSE = "sprites/foregroundObject/house.png";
-    public static String HERO = "/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/npc/hero.png";
-    public static String DEFAULT = "/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/backgroundTile/default.png";
+    public static String GRASS = "src/main/resources/sprites/backgroundTile/grass.png";
+    public static String SEA = "src/main/resources/sprites/backgroundTile/sea.png";
+    public static String CENTER = "src/main/resources/sprites/foregroundObject/center.png";
+    public static String HOUSE = "src/main/resources/sprites/foregroundObject/house.png";
+    public static String HERO = "src/main/resources/sprites/npc/hero.png";
+    public static String DEFAULT = "src/main/resources/sprites/backgroundTile/default.png";
 
 }

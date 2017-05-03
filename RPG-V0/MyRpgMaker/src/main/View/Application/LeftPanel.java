@@ -18,7 +18,7 @@ import javax.swing.plaf.basic.BasicBorders;
 public class LeftPanel extends JFrame{
 
     // File representing the folder that you select using a FileChooser
-    final File dir = new File("/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites/foregroundObject");
+    final File dir = new File("src/main/resources/sprites/foregroundObject");
 
     // array of supported extensions (use a List if you prefer)
     final String[] EXTENSIONS = new String[]{

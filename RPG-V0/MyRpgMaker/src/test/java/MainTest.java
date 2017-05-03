@@ -15,6 +15,7 @@ import java.io.IOException;
 public class MainTest {
 
     public static void main(String[] args) {
+
         PanelTest(20,20);
     }
 
@@ -60,7 +61,8 @@ public class MainTest {
 
         JPanel j1 = new JPanel();
 
-        File test = new File("/home/hugo/myrpgmaker/RPG-V0/MyRpgMaker/src/main/resources/sprites");
+        File test = new File("resources/sprites");
+        System.out.println("---------- " + test.toString());
         File[] Sprites = test.listFiles();
 
         for ( File s: Sprites ) {
