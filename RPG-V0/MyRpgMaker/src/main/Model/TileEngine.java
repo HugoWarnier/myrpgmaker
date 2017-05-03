@@ -1,11 +1,13 @@
 package Model;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
  * Created by Hermann on 29/04/2017.
  */
-public class TileEngine {
+public class TileEngine extends JPanel{
     private ArrayList<Integer> sprites;
 
     public TileEngine(ArrayList<Integer> sprites){
@@ -37,5 +39,9 @@ public class TileEngine {
 
     public void addTile(int id){
         //add tile with identifier
+    }
+
+    public void paintComponent(Graphics g){
+        g.fillOval(20, 20, 75, 75);
     }
 }

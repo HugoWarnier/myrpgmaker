@@ -1,5 +1,6 @@
 import Controller.GameEngineController;
 import Model.*;
+import View.Engine.EngineView;
 
 import java.util.ArrayList;
 
@@ -8,9 +9,8 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello");
-        CharacterEngine c1 = new CharacterEngine(1, "1", 200, new Position(0,0));
-        CharacterEngine c2 = new CharacterEngine(2, "2", 200, new Position(1,1));
+        CharacterEngine c1 = new CharacterEngine(1, "1", 200, new Position(14,10));
+        CharacterEngine c2 = new CharacterEngine(2, "2", 200, new Position(4,17));
         CharacterEngine c3 = new CharacterEngine(3, "3", 200, new Position(0,0));
 
         ArrayList<CharacterEngine> al1 = new ArrayList<CharacterEngine>();
@@ -35,11 +35,32 @@ public class Main {
         j.add(3);
         j.add(1);
 
-        TileEngine[][] mt1 = {{new TileEngine(i),new TileEngine(j)},{new TileEngine(i),new TileEngine(i)}};
-        TileEngine[][] mt2 = {{new TileEngine(j), new TileEngine(i)},{new TileEngine(i), new TileEngine(j)}};
+        String[][] mt1 = {
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","WATER","WATER","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","WATER","WATER","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","WATER","WATER","WATER","WATER","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","WATER","WATER","WATER","WATER","WATER","WATER","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","WATER","WATER","WATER","WATER","WATER","WATER","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","WATER","WATER","WATER","WATER","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"},
+                {"GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS","GRASS"}
+        };
+        String[][] mt2 = {{"GRASS", "GRASS"},{"GRASS", "GRASS"},{"GRASS","GRASS"},{"GRASS","GRASS"}};
 
-        MapEngine m1 = new MapEngine("1", "1", mt1, "file", 2, 2, al1, al3);
-        MapEngine m2 = new MapEngine("2", "2", mt2, "file", 2, 2, al2, al4);
+        MapEngine m1 = new MapEngine("1", "1", mt1, 20, 20, al1, al3);
+        MapEngine m2 = new MapEngine("2", "2", mt2, 2, 2, al2, al4);
         ArrayList<MapEngine> al5 = new ArrayList<MapEngine>();
         al5.add(m1);
         al5.add(m2);
@@ -48,5 +69,8 @@ public class Main {
 
         GameEngineController g = new GameEngineController(w);
         g.save("test");
+
+        EngineView v = new EngineView(w);
+
     }
 }
