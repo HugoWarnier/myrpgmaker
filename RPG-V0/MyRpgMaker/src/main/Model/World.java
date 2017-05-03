@@ -14,4 +14,8 @@ public class World{
     public World(MapEngine map){
         this.maps.add(map);
     }
+
+    public ArrayList<MapEngine> getMaps() {
+        return maps;
+    }
 }
