@@ -42,8 +42,6 @@ public class Application extends JFrame implements Observer{
 
     private JPanel CreateGameBoard(){
         EditorView Edtv = new EditorView(Editor);
-
-        add(Edtv, BorderLayout.CENTER);
         return Edtv.initGameBoard();
     }
 
@@ -51,7 +49,6 @@ public class Application extends JFrame implements Observer{
 
         CreateMenuBar();
         CreateToolBar();
-        CreateGameBoard();
 
         GridBagLayout gb = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
