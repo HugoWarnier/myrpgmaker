@@ -49,40 +49,55 @@ public class LeftPanel extends JFrame{
     public JPanel CreateLeftPanel () {
 
         DefaultListModel Model = ReadImage("src/main/resources/sprites/");
-        LeftPanel.setLayout(new GridLayout(2,1));
-        LeftPanel.setPreferredSize(new Dimension(400,200));
+        DefaultListModel listModel1 = new DefaultListModel();
+        DefaultListModel listModel2 = new DefaultListModel();
+        DefaultListModel listModel3 = new DefaultListModel();
+
+
+        JList list = new JList(listModel1);
+        JList list2 = new JList(listModel2);
+        JList list3 = new JList(listModel3);
+
+        LeftPanel.setLayout(new GridLayout(1,1));
+        LeftPanel.setSize(500,500);
         LeftPanel.setBorder(BorderFactory.createTitledBorder("Image Editor"));
+
+        PanelRenderer renderer = new PanelRenderer();
+        list.setCellRenderer(renderer);
+        list2.setCellRenderer(renderer);
+        list3.setCellRenderer(renderer);
+
 
         JTabbedPane Tab = new JTabbedPane();
         JPanel PanTab1 = new JPanel();
         JPanel PanTab2 = new JPanel();
         JPanel PanTab3 = new JPanel();
 
-        Tab.addTab("BackGround", PanTab1);
-        Tab.addTab("ForeGround", PanTab2);
-        Tab.addTab("Character", PanTab3);
-
-        LeftPanel.add(Tab, LeftPanel);
-        //getContentPane().add(Tab, BorderLayout.WEST);
         for (int i = 0; i < Model.getSize(); i++) {
-            JPanel Panel = new JPanel();
+            //JPanel Panel = new JPanel();
             JButton button = (JButton) Model.getElementAt(i);
 
-            if (button.getToolTipText().contains("npc")) {
-                Panel.add(button);
-                PanTab3.add(Panel);
-            }
+            if (button.getToolTipText().contains("backgroundTile"))
+                listModel1.addElement(button);
 
-            else if (button.getToolTipText().contains("backgroundTile")) {
-                Panel.add(button);
-                PanTab1.add(Panel);
-            }
+            else if (button.getToolTipText().contains("foregroundObject"))
+                listModel2.addElement(button);
 
-            else if (button.getToolTipText().contains("foregroundObject")) {
-                Panel.add(button);
-                PanTab2.add(Panel);
-            }
+            else if (button.getToolTipText().contains("npc"))
+                listModel3.addElement(button);
         }
+        PanTab1.add(list);
+        PanTab2.add(list2);
+        PanTab3.add(list3);
+
+        JScrollPane scrollPane1 = new JScrollPane(PanTab1);
+        JScrollPane scrollPane2 = new JScrollPane(PanTab2);
+        JScrollPane scrollPane3 = new JScrollPane(PanTab3);
+
+        Tab.addTab("BackGround", scrollPane1);
+        Tab.addTab("ForeGround", scrollPane2);
+        Tab.addTab("Character", scrollPane3);
+        LeftPanel.add(Tab, LeftPanel);
 
         return LeftPanel;
     }

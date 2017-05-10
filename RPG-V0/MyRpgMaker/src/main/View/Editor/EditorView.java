@@ -43,15 +43,16 @@ public class EditorView extends JPanel implements Observer {
         repaint();
     }
 
-    public void initGameBoard(){
-
+    public JPanel initGameBoard(){
+        JPanel pan = new JPanel();
        setLayout(new GridLayout(sizeX,sizeY));
         for (int i = 0; i < sizeX ; i++) {
             for (int k = 0; k < sizeY ; k++) {
                 JButton tileBoard = new tileGameBoard(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite());
-               add(tileBoard);
+                pan.add(tileBoard);
             }
         }
+        return pan;
     }
 
     public class tileGameBoard extends JButton{
