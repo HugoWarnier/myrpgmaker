@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -30,32 +31,57 @@ public class Application extends JFrame implements Observer{
         Init_menu("rpgMaker", 1200, 700);
     }
 
+    public GameEditorController GetEditor() {
+        return Editor;
+    }
     public Application(GameEditorController Edit) throws IOException {
         Editor = Edit;
         Init_menu("rpgMaker", 1200, 700);
     }
 
-    private void CreateGameBoard(){
+    private JPanel CreateGameBoard(){
         EditorView Edtv = new EditorView(Editor);
-        add(Edtv.initGameBoard(), BorderLayout.CENTER);
+        return Edtv.initGameBoard();
     }
 
     private void Init_menu(String title, int width, int height) throws IOException {
 
         CreateMenuBar();
         CreateToolBar();
-        //CreateGameBoard();
+
+        GridBagLayout gb = new GridBagLayout();
+        GridBagConstraints gbc = new GridBagConstraints();
+        JPanel map = CreateGameBoard();
+        JPanel CenterPanel = new JPanel();
+
+        CenterPanel.setLayout(gb);
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
         LeftPanel file = new LeftPanel();
-        JPanel Left = new JPanel();
-        Left = file.CreateLeftPanel();
-        add(Left, BorderLayout.WEST);
+        JPanel first = new JPanel();
+        first = file.CreateLeftPanel();
+
+        FileBrowser filebrowser = new FileBrowser();
+        JPanel second = filebrowser.FileBrowser(this);
+        JSplitPane splipane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, first, second);
+
+        splipane.setDividerLocation(400);
+        CenterPanel.add(splipane, gbc);
+
+        gbc.gridx = 1;
+        CenterPanel.add(map, gbc);
+
+        add(CenterPanel, BorderLayout.CENTER);
 
         pack();
         setTitle(title);
-        //setSize(width, height);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );
+        setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);
     }
 
     private void CreateMenuBar() {
@@ -185,14 +211,6 @@ public class Application extends JFrame implements Observer{
         toolbar.add(exit);
 
         add(toolbar, BorderLayout.NORTH);
-
-        /*create_file.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TODO
-                System.exit(0);
-            }
-        });*/
     }
 
     public JButton CreateButton (String[] info) {
@@ -235,7 +253,6 @@ public class Application extends JFrame implements Observer{
     public void CreateImageExplorer(JButton button) {
         setLayout(new GridLayout(1, 2));
         add(createLeftPanel(button));
-        // add(createRightPanel());
     }
 
     protected JPanel createLeftPanel(JButton button) {
