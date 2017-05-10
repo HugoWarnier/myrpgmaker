@@ -10,7 +10,7 @@ public class SpriteValue {
     public static String CENTER = "src/main/resources/sprites/foregroundObject/center.png";
     public static String HOUSE = "src/main/resources/sprites/foregroundObject/house.png";
     public static String HERO = "src/main/resources/sprites/npc/hero.png";
-    public static String DEFAULT = "src/main/resources/sprites/backgroundTile/default.png";
+    public static String DEFAULT = "src/main/resources/sprites/backgroundTile/grass.png";
 
 
 }

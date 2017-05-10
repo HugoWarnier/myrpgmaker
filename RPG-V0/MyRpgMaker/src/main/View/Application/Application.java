@@ -25,6 +25,7 @@ public class Application extends JFrame implements Observer{
 
     public GameEditorController Editor;
     public GameEngineController Engine;
+    public EditorView Edt;
 
     public Application() throws IOException {
         Init_menu("rpgMaker", 1200, 700);
@@ -37,14 +38,14 @@ public class Application extends JFrame implements Observer{
 
     private void CreateGameBoard(){
         EditorView Edtv = new EditorView(Editor);
-        add(Edtv.initGameBoard(), BorderLayout.CENTER);
+        add(Edtv, BorderLayout.CENTER);
     }
 
     private void Init_menu(String title, int width, int height) throws IOException {
 
         CreateMenuBar();
         CreateToolBar();
-        //CreateGameBoard();
+        CreateGameBoard();
         LeftPanel file = new LeftPanel();
         JPanel Left = new JPanel();
         Left = file.CreateLeftPanel();
@@ -89,7 +90,8 @@ public class Application extends JFrame implements Observer{
             JFileChooser fileChooser = new JFileChooser();
             if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 File tmp = fileChooser.getSelectedFile();
-                Editor.LoadMap(tmp);
+                Editor.LoadMap(tmp.toString());
+                Edt.repaint();
             }
         });
 

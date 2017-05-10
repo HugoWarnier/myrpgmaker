@@ -1,7 +1,6 @@
 package Model;
 
 import com.google.gson.*;
-import jdk.nashorn.internal.scripts.JO;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -35,32 +34,33 @@ public class Game extends AbstractModel{
         this.listMap.add(map);
     }
 
-    public void parseMap(String content){
+    public void parseMap(String content, int Y){
 
         JsonElement Jelem = new JsonParser().parse(content);
         JsonObject Jobj = Jelem.getAsJsonObject();
         JsonArray Jarray = Jobj.getAsJsonArray("Map");
-        ReadJsonForLoad(Jarray);
+        int X = Jarray.get(1).getAsJsonArray().size();
+        ReadJsonForLoad(Jarray, X, Y);
     }
 
-    public void ReadJsonForLoad(JsonArray Jarray){
+    public void ReadJsonForLoad(JsonArray Jarray, int X, int Y){
 
-        int sizeX = this.getListMap().get(0).getxSize();
-        int sizeY = this.getListMap().get(0).getySize();
         int cpt = 0;
 
+        MapEditor mMap = new MapEditor(X,Y);
+
         for (JsonElement Jelem0 : Jarray) {
-            System.out.println(Jelem0);
-            for (int i = 0; i < sizeX ; i++) {
-                this.getListMap().get(0).getMap()[i][cpt].rm_FSprite();
-                this.getListMap().get(0).getMap()[i][cpt].add_SpriteByRef(Jelem0.getAsJsonArray().get(i).toString());
+            //System.out.println(Jelem0);
+            for (int i = 0; i < X ; i++) {
+                mMap.getMap()[i][cpt].rm_FSprite();
+                mMap.getMap()[i][cpt].add_SpriteByRef(Jelem0.getAsJsonArray().get(i).toString());
             }
             cpt++;
         }
-        this.listMap.add(this.getListMap().get(0));
+        addMap(mMap);
     }
 
-    public void loadMap(File path){
+    public void loadMap(String path){
 
         try {
             /**
@@ -72,18 +72,22 @@ public class Game extends AbstractModel{
             BufferedReader buffer = new BufferedReader(mapReader);
             String l;
             String content = "";
-            JsonArray Jarray = new JsonArray();
 
             /**
              *  Map Reading / Factoring
              **/
 
             try {
+                int X = 0;
+                int Y = 0;
+
                 while((l = buffer.readLine()) != null){
-                    //System.out.println(l);
+                    System.out.println(l);
+                    Y++;
                     content += l+"\n";
                 }
-                parseMap(content);
+                System.out.println(Y);
+                parseMap(content, Y);
                 buffer.close();
 
             } catch (IOException e) {
@@ -155,9 +159,13 @@ public class Game extends AbstractModel{
     public ArrayList<MapEditor> getListMap() {
         return listMap;
     }
+
     public void addMap(MapEditor map) {
         this.listMap.add(map);
+        setChanged();
+        notifyObservers("load");
     }
+
     public void rmMap(MapEditor map) {
         this.listMap.remove(map);
     }

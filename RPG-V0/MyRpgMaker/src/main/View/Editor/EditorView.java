@@ -11,7 +11,7 @@ import java.util.Observer;
 /**
  * Created by hugo on 27/04/17.
  */
-public class EditorView extends JFrame implements Observer {
+public class EditorView extends JPanel implements Observer {
 
     private GameEditorController controller;
     private Game game;
@@ -24,22 +24,34 @@ public class EditorView extends JFrame implements Observer {
         this.game = controller.getGame();
         this.sizeX = game.getListMap().get(0).getxSize();
         this.sizeY = game.getListMap().get(0).getySize();
+        game.addObserver(this);
         setSize(400,400);
         initGameBoard();
     }
 
-    public JPanel initGameBoard(){
+    public void UpdateGameBoard(){
 
-        JPanel GameBoard = new JPanel();
+        this.setLayout(new GridLayout(sizeX,sizeY));
+        for (int i = 0; i < sizeX ; i++) {
+            for (int k = 0; k < sizeY ; k++) {
+                System.out.println(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite());
+                JButton tileBoard = new tileGameBoard(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite());
+                this.add(tileBoard);
+            }
+        }
+        revalidate();
+        repaint();
+    }
 
-        GameBoard.setLayout(new GridLayout(sizeX,sizeY));
+    public void initGameBoard(){
+
+       setLayout(new GridLayout(sizeX,sizeY));
         for (int i = 0; i < sizeX ; i++) {
             for (int k = 0; k < sizeY ; k++) {
                 JButton tileBoard = new tileGameBoard(game.getListMap().get(0).getMap()[i][k].getLayer().get(0).getPath_sprite());
-                GameBoard.add(tileBoard);
+               add(tileBoard);
             }
         }
-        return GameBoard;
     }
 
     public class tileGameBoard extends JButton{
@@ -61,7 +73,14 @@ public class EditorView extends JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        if(o instanceof Game){
+            switch (arg.toString()){
+                case "load": UpdateGameBoard();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 

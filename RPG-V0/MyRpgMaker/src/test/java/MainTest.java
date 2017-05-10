@@ -1,7 +1,9 @@
+import Controller.GameController;
 import Controller.GameEditorController;
 import Model.Game;
 import View.Application.Application;
 import View.Editor.EditorView;
+import View.GlobalView;
 
 
 import javax.swing.*;
@@ -16,24 +18,12 @@ public class MainTest {
 
     public static void main(String[] args) {
 
-        PanelTest(20,20);
+        Apps(); //run the client -> application
     }
 
-    public static void PanelTest(int x,int y){
-        try {
+    public static void Apps(){
 
-            int sizeX = x;
-            int sizeY = y;
-            System.out.println("ici");
-            Game game = new Game(sizeX,sizeY);
-            GameEditorController editor = new GameEditorController(game);
-            System.out.println(editor);
-            Application app = new Application(editor);
-            app.setVisible(true);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        GameController Gamec = new GameController();
     }
 
     public static void LoadMapTest(int x,int y){

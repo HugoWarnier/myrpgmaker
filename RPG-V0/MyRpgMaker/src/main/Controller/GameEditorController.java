@@ -38,8 +38,7 @@ public class GameEditorController extends AbstractController{
         return listSprite;
     }
 
-
-    public void LoadMap(File path){
+    public void LoadMap(String path){
         game.loadMap(path);
     }
 
